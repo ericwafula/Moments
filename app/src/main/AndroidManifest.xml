@@ -4,7 +4,7 @@
     package="tech.ericwathome.moments">
 
     <application
-        android:name=".util.MomentumApplication"
+        android:name=".utils.MomentumApplication"
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
         android:fullBackupContent="@xml/backup_rules"
