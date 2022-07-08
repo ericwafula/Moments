@@ -29,6 +29,6 @@ object ImageClient {
         .addConverterFactory(GsonConverterFactory.create())
         .build()
 
-    val imageApi = retrofit.create(ImageApi::class.java)
+    val imageApi: ImageApi = retrofit.create(ImageApi::class.java)
 
 }

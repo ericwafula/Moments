@@ -3,6 +3,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     package="tech.ericwathome.moments">
 
+    <uses-permission android:name="android.permission.INTERNET"/>
+
     <application
         android:name=".utils.MomentumApplication"
         android:allowBackup="true"

@@ -1,13 +1,13 @@
 package tech.ericwathome.moments.network
 
-import kotlinx.coroutines.flow.Flow
+import retrofit2.Response
 import retrofit2.http.GET
-import retrofit2.http.Query
-import tech.ericwathome.moments.model.Photo
+import retrofit2.http.QueryMap
+import tech.ericwathome.moments.model.Image
 
 interface ImageApi {
     @GET("photos")
     suspend fun getAllPhotos(
-        @Query("page") page: Int
-    ): Flow<List<Photo>>
+        @QueryMap filter: HashMap<String, Int>
+    ): Response<List<Image>>
 }
