@@ -12,11 +12,13 @@
         android:layout_height="match_parent">
 
         <com.google.android.material.appbar.AppBarLayout
+            app:elevation="0dp"
             android:id="@+id/appbar_layout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
 
             <androidx.appcompat.widget.Toolbar
+                app:navigationIcon="@drawable/ic_menu_24"
                 android:id="@+id/toolbar"
                 android:layout_width="match_parent"
                 android:layout_height="?attr/actionBarSize" />

@@ -8,6 +8,5 @@
     <fragment
         android:id="@+id/imagesFragment"
         android:name="tech.ericwathome.moments.ui.ImagesFragment"
-        android:label="fragment_images"
         tools:layout="@layout/fragment_images" />
 </navigation>
