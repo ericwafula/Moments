@@ -2,12 +2,12 @@ package tech.ericwathome.moments.ui
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
-import androidx.lifecycle.lifecycleScope
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.launch
+import androidx.navigation.NavController
+import androidx.navigation.fragment.NavHostFragment
+import androidx.navigation.ui.AppBarConfiguration
+import androidx.navigation.ui.setupWithNavController
 import tech.ericwathome.moments.R
-import tech.ericwathome.moments.network.ImageClient
+import tech.ericwathome.moments.databinding.ActivityMainBinding
 
 //@AndroidEntryPoint
 class MainActivity : AppCompatActivity() {
@@ -15,28 +15,21 @@ class MainActivity : AppCompatActivity() {
         private val TAG = this::class.simpleName
     }
 
-    private val imageApi by lazy {
-        ImageClient.imageApi
-    }
+    private lateinit var binding: ActivityMainBinding
+    private lateinit var navController: NavController
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
+        binding = ActivityMainBinding.inflate(layoutInflater)
+        setContentView(binding.root)
 
-        networkRequest()
+        val navHostFrag = supportFragmentManager.findFragmentById(R.id.nav_host_frag) as NavHostFragment
+        navController = navHostFrag.navController
+
+        val appBarConfiguration = AppBarConfiguration(navController.graph, binding.drawerLayout)
+        binding.toolbar.setupWithNavController(navController, appBarConfiguration)
+        binding.navigationView.setupWithNavController(navController)
     }
 
-    private fun networkRequest() {
-        val filter = HashMap<String, Int>()
-        filter["page"] = 1
-        filter["per_page"] = 20
 
-
-        lifecycleScope.launch(Dispatchers.IO) {
-            val response = imageApi.getAllPhotos(filter)
-            if (response.isSuccessful) {
-                Log.d(TAG, "networkRequest: ${response.body()}")
-            }
-        }
-    }
 }
